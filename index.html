@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeddingGate Fit Assessment</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff9fb;
+      color: #4a4a4a;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    .header {
+      text-align: center;
+      padding: 20px 0;
+      background: linear-gradient(135deg, #c2185b, #e91e63);
+      color: white;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+    .question {
+      margin: 25px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-left: 4px solid #e91e63;
+    }
+    label {
+      display: block;
+      margin: 12px 0;
+      padding: 12px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    label:hover {
+      background: #ffeef2;
+      transform: translateX(5px);
+    }
+    input[type="radio"] {
+      margin-right: 12px;
+      transform: scale(1.1);
+    }
+    .result-section {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .result-card {
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .high-fit {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border: 2px solid #4caf50;
+    }
+    .medium-fit {
+      background: linear-gradient(135deg, #fff8e1, #ffecb3);
+      border: 2px solid #ffc107;
+    }
+    .low-fit {
+      background: linear-gradient(135deg, #ffebee, #ffcdd2);
+      border: 2px solid #f44336;
+    }
+    .result-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .result-score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .test-tube {
+      width: 60px;
+      height: 150px;
+      background: #f0f0f0;
+      border-radius: 0 0 30px 30px;
+      position: relative;
+      margin: 0 auto 15px;
+      border: 3px solid #4a4a4a;
+      border-top: none;
+      overflow: hidden;
+    }
+    .test-tube::before {
+      content: "";
+      width: 80px;
+      height: 15px;
+      background: #4a4a4a;
+      position: absolute;
+      top: -15px;
+      left: -10px;
+      border-radius: 5px 5px 0 0;
+    }
+    .liquid {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-radius: 0 0 25px 25px;
+      transition: height 1s ease-in-out;
+    }
+    .percentage {
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .recommendations {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .recommendations li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+    .recommendations li:before {
+      content: "•";
+      color: #e91e63;
+      font-size: 1.5em;
+      position: absolute;
+      left: 5px;
+      top: -5px;
+    }
+    button {
+      background: linear-gradient(135deg, #c2185b, #e91e63);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      cursor: pointer;
+      font-size: 1.1em;
+      margin: 30px auto;
+      display: block;
+      border-radius: 50px;
+      transition: all 0.3s;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(194, 24, 91, 0.3);
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(194, 24, 91, 0.4);
+    }
+    button:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .progress-container {
+      width: 100%;
+      background-color: #f3f3f3;
+      border-radius: 50px;
+      margin: 20px 0;
+      height: 10px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #c2185b, #e91e63);
+      border-radius: 50px;
+      width: 0%;
+      transition: width 0.5s;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #4caf50;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s;
+    }
+    .cta-button:hover {
+      background: #3d8b40;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>WeddingGate Fit Assessment</h1>
+    <div class="subtitle">Find out if WeddingGate is right for your event planning business</div>
+  </div>
+  
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  
+  <form id="assessmentForm">
+    <div class="question">
+      <p>1. Do you currently spend 3+ hours per week managing vendor communications?</p>
+      <label><input type="radio" name="q1" value="1" required /> Yes, it's a significant time drain</label>
+      <label><input type="radio" name="q1" value="0" /> No, vendor communication is manageable</label>
+    </div>
+    
+    <div class="question">
+      <p>2. Do you struggle with keeping track of client preferences and details across multiple events?</p>
+      <label><input type="radio" name="q2" value="1" required /> Yes, I often lose track of details</label>
+      <label><input type="radio" name="q2" value="0" /> No, I have a system that works</label>
+    </div>
+    
+    <div class="question">
+      <p>3. Are you currently using 3+ different tools (like Excel, WhatsApp, Google Drive) to manage events?</p>
+      <label><input type="radio" name="q3" value="1" required /> Yes, and it's frustrating to switch between them</label>
+      <label><input type="radio" name="q3" value="0" /> No, I use one or two main tools</label>
+    </div>
+    
+    <div class="question">
+      <p>4. Have you ever missed a deadline or important detail because it wasn't properly tracked?</p>
+      <label><input type="radio" name="q4" value="1" required /> Yes, it's happened before</label>
+      <label><input type="radio" name="q4" value="0" /> No, I have reliable tracking systems</label>
+    </div>
+    
+    <div class="question">
+      <p>5. Would you benefit from having all client information, vendor contacts, and event details in one place?</p>
+      <label><input type="radio" name="q5" value="1" required /> Yes, that would save me significant time</label>
+      <label><input type="radio" name="q5" value="0" /> No, my current system works fine</label>
+    </div>
+    
+    <div class="question">
+      <p>6. Do you manage 5+ weddings/events per month?</p>
+      <label><input type="radio" name="q6" value="1" required /> Yes, and it's overwhelming at times</label>
+      <label><input type="radio" name="q6" value="0" /> No, I handle fewer events</label>
+    </div>
+    
+    <div class="question">
+      <p>7. Would you pay for a tool that could save you 5+ hours per week on admin tasks?</p>
+      <label><input type="radio" name="q7" value="1" required /> Yes, if it actually saved me time</label>
+      <label><input type="radio" name="q7" value="0" /> No, I prefer my current methods</label>
+    </div>
+    
+    <button type="button" id="submitBtn" disabled onclick="showResults()">See My Results</button>
+  </form>
+
+  <div class="result-section" id="resultSection">
+    <div class="result-card" id="resultCard">
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-score">
+        <div class="test-tube">
+          <div class="liquid" id="liquidFill"></div>
+        </div>
+        <div class="percentage" id="percentageText">0%</div>
+      </div>
+      <div id="resultDescription"></div>
+      
+      <div class="recommendations">
+        <h3>Recommended Next Steps:</h3>
+        <ul id="recommendationsList"></ul>
+      </div>
+      
+      <a href="https://calendly.com/victorylydiaexcelhalleluyah/30min" class="cta-button" target="_blank">Book a Free Consultation</a>
+    </div>
+  </div>
+
+  <script>
+    // Form validation and progress tracking
+    const form = document.forms['assessmentForm'];
+    const submitBtn = document.getElementById('submitBtn');
+    
+    form.addEventListener('change', () => {
+      let answeredCount = 0;
+      for (let i = 1; i <= 7; i++) {
+        if (form.querySelector(`input[name="q${i}"]:checked`)) {
+          answeredCount++;
+        }
+      }
+      
+      // Update progress bar
+      const progress = (answeredCount / 7) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+      
+      // Enable/disable submit button
+      submitBtn.disabled = answeredCount < 7;
+    });
+
+    function showResults() {
+      let score = 0;
+      for (let i = 1; i <= 7; i++) {
+        score += parseInt(form[`q${i}`].value);
+      }
+      
+      const percentage = Math.round((score / 7) * 100);
+      const resultSection = document.getElementById('resultSection');
+      const resultCard = document.getElementById('resultCard');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultDescription = document.getElementById('resultDescription');
+      const recommendationsList = document.getElementById('recommendationsList');
+      const liquidFill = document.getElementById('liquidFill');
+      const percentageText = document.getElementById('percentageText');
+      
+      // Set liquid color and fill based on score
+      if (percentage >= 85) {
+        resultCard.className = "result-card high-fit";
+        liquidFill.style.background = 'linear-gradient(to top, #4CAF50, #81C784)';
+        resultTitle.textContent = "Perfect Fit!";
+        resultDescription.innerHTML = `
+          <p>WeddingGate could save you 5-10 hours per week based on your answers!</p>
+          <p>You're experiencing exactly the pain points we solve.</p>
+        `;
+        recommendationsList.innerHTML = `
+          <li>Join our priority waitlist for early access</li>
+          <li>Schedule a demo to see how WeddingGate works</li>
+          <li>Start planning your onboarding process</li>
+        `;
+      } 
+      else if (percentage >= 50) {
+        resultCard.className = "result-card medium-fit";
+        liquidFill.style.background = 'linear-gradient(to top, #FFC107, #FFD54F)';
+        resultTitle.textContent = "Good Potential Fit";
+        resultDescription.innerHTML = `
+          <p>WeddingGate could help streamline parts of your workflow.</p>
+          <p>You might benefit most from our vendor management and client tracking features.</p>
+        `;
+        recommendationsList.innerHTML = `
+          <li>Try our free tools for vendor management</li>
+          <li>Attend a webinar to see if it fits your needs</li>
+          <li>Follow our blog for planning tips</li>
+        `;
+      }
+      else {
+        resultCard.className = "result-card low-fit";
+        liquidFill.style.background = 'linear-gradient(to top, #F44336, #E57373)';
+        resultTitle.textContent = "Limited Fit";
+        resultDescription.innerHTML = `
+          <p>Based on your answers, your current workflow might not need WeddingGate yet.</p>
+          <p>We recommend checking back when you're managing more events or feeling more pain with vendor coordination.</p>
+        `;
+        recommendationsList.innerHTML = `
+          <li>Follow us to see new features as we launch them</li>
+          <li>Download our free event planning templates</li>
+          <li>Join our Facebook group for planners</li>
+        `;
+      }
+      
+      // Animate liquid fill and show percentage
+      liquidFill.style.height = `${percentage}%`;
+      percentageText.textContent = `${percentage}%`;
+      
+      // Show results
+      resultSection.style.display = 'block';
+      resultSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Track submission (you can add analytics here)
+      console.log(`Assessment completed with score: ${percentage}%`);
+    }
+  </script>
+</body>
+</html>
