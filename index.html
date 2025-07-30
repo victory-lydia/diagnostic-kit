@@ -208,46 +208,94 @@
   </div>
   
   <form id="assessmentForm">
+    <!-- SECTION 1: Workflow -->
     <div class="question">
-      <p>1. Do you currently spend 3+ hours per week managing vendor communications?</p>
-      <label><input type="radio" name="q1" value="1" required /> Yes, it's a significant time drain</label>
-      <label><input type="radio" name="q1" value="0" /> No, vendor communication is manageable</label>
+      <p>1. How do you currently track vendor availability and bookings?</p>
+      <label><input type="radio" name="q1" value="2" required /> Manual calls/texts/emails (very time-consuming)</label>
+      <label><input type="radio" name="q1" value="1" /> Spreadsheets or basic tools</label>
+      <label><input type="radio" name="q1" value="0" /> Dedicated software (e.g., Aisle Planner, HoneyBook)</label>
     </div>
     
     <div class="question">
-      <p>2. Do you struggle with keeping track of client preferences and details across multiple events?</p>
-      <label><input type="radio" name="q2" value="1" required /> Yes, I often lose track of details</label>
-      <label><input type="radio" name="q2" value="0" /> No, I have a system that works</label>
+      <p>2. How often do vendors disappoint you (late, no-shows, quality issues)?</p>
+      <label><input type="radio" name="q2" value="2" required /> At least once per wedding</label>
+      <label><input type="radio" name="q2" value="1" /> Occasionally (1-2 times per season)</label>
+      <label><input type="radio" name="q2" value="0" /> Rarely or never</label>
+    </div>
+    
+    <!-- SECTION 2: Pain Points -->
+    <div class="question">
+      <p>3. What's your biggest frustration with vendor coordination?</p>
+      <label><input type="radio" name="q3" value="2" required /> Last-minute cancellations or changes</label>
+      <label><input type="radio" name="q3" value="1" /> Miscommunication about details</label>
+      <label><input type="radio" name="q3" value="0" /> Finding new/reliable vendors</label>
     </div>
     
     <div class="question">
-      <p>3. Are you currently using 3+ different tools (like Excel, WhatsApp, Google Drive) to manage events?</p>
-      <label><input type="radio" name="q3" value="1" required /> Yes, and it's frustrating to switch between them</label>
-      <label><input type="radio" name="q3" value="0" /> No, I use one or two main tools</label>
+      <p>4. How do you handle client-vendor contract mismatches?</p>
+      <label><input type="radio" name="q4" value="2" required /> Crisis mode - lots of stressful renegotiation</label>
+      <label><input type="radio" name="q4" value="1" /> Time-consuming manual checks</label>
+      <label><input type="radio" name="q4" value="0" /> My system catches most issues early</label>
+    </div>
+    
+    <!-- SECTION 3: Client Management -->
+    <div class="question">
+      <p>5. How often do clients change key details after booking vendors?</p>
+      <label><input type="radio" name="q5" value="2" required /> Frequently (50%+ of weddings)</label>
+      <label><input type="radio" name="q5" value="1" /> Sometimes (25-50%)</label>
+      <label><input type="radio" name="q5" value="0" /> Rarely</label>
     </div>
     
     <div class="question">
-      <p>4. Have you ever missed a deadline or important detail because it wasn't properly tracked?</p>
-      <label><input type="radio" name="q4" value="1" required /> Yes, it's happened before</label>
-      <label><input type="radio" name="q4" value="0" /> No, I have reliable tracking systems</label>
+      <p>6. How stressful are family conflicts (e.g., bride vs. mother-in-law)?</p>
+      <label><input type="radio" name="q6" value="2" required /> Major stress point - affects vendor work</label>
+      <label><input type="radio" name="q6" value="1" /> Manageable but time-consuming</label>
+      <label><input type="radio" name="q6" value="0" /> Rarely an issue</label>
+    </div>
+    
+    <!-- SECTION 4: Vendor Database -->
+    <div class="question">
+      <p>7. How organized is your vendor contact list?</p>
+      <label><input type="radio" name="q7" value="2" required /> Scattered across phone/email/notes</label>
+      <label><input type="radio" name="q7" value="1" /> In one place but not searchable</label>
+      <label><input type="radio" name="q7" value="0" /> Properly categorized and searchable</label>
     </div>
     
     <div class="question">
-      <p>5. Would you benefit from having all client information, vendor contacts, and event details in one place?</p>
-      <label><input type="radio" name="q5" value="1" required /> Yes, that would save me significant time</label>
-      <label><input type="radio" name="q5" value="0" /> No, my current system works fine</label>
+      <p>8. How do you compare vendors for new clients?</p>
+      <label><input type="radio" name="q8" value="2" required /> From memory or frantic searches</label>
+      <label><input type="radio" name="q8" value="1" /> Manual spreadsheets/notes</label>
+      <label><input type="radio" name="q8" value="0" /> Organized system with ratings</label>
+    </div>
+    
+    <!-- SECTION 5: Tech Readiness -->
+    <div class="question">
+      <p>9. Would automated vendor matching save you time?</p>
+      <label><input type="radio" name="q9" value="2" required /> Yes! I waste hours on this</label>
+      <label><input type="radio" name="q9" value="1" /> Maybe for some vendor types</label>
+      <label><input type="radio" name="q9" value="0" /> No, I prefer manual selection</label>
     </div>
     
     <div class="question">
-      <p>6. Do you manage 5+ weddings/events per month?</p>
-      <label><input type="radio" name="q6" value="1" required /> Yes, and it's overwhelming at times</label>
-      <label><input type="radio" name="q6" value="0" /> No, I handle fewer events</label>
+      <p>10. How do you track payments/deposits?</p>
+      <label><input type="radio" name="q10" value="2" required /> Memory or paper notes (sometimes miss things)</label>
+      <label><input type="radio" name="q10" value="1" /> Spreadsheets (works but clunky)</label>
+      <label><input type="radio" name="q10" value="0" /> Dedicated financial software</label>
+    </div>
+    
+    <!-- SECTION 6: Business Scale -->
+    <div class="question">
+      <p>11. How many weddings do you plan annually?</p>
+      <label><input type="radio" name="q11" value="2" required /> 20+ (struggling with scale)</label>
+      <label><input type="radio" name="q11" value="1" /> 10-20 (starting to feel the pain)</label>
+      <label><input type="radio" name="q11" value="0" /> Under 10 (manageable for now)</label>
     </div>
     
     <div class="question">
-      <p>7. Would you pay for a tool that could save you 5+ hours per week on admin tasks?</p>
-      <label><input type="radio" name="q7" value="1" required /> Yes, if it actually saved me time</label>
-      <label><input type="radio" name="q7" value="0" /> No, I prefer my current methods</label>
+      <p>12. Would you pay for a tool that could save 5+ hours/week?</p>
+      <label><input type="radio" name="q12" value="2" required /> Absolutely - time is my biggest constraint</label>
+      <label><input type="radio" name="q12" value="1" /> Maybe if the price was right</label>
+      <label><input type="radio" name="q12" value="0" /> No, my current system works fine</label>
     </div>
     
     <button type="button" id="submitBtn" disabled onclick="showResults()">See My Results</button>
@@ -280,27 +328,27 @@
     
     form.addEventListener('change', () => {
       let answeredCount = 0;
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 12; i++) {
         if (form.querySelector(`input[name="q${i}"]:checked`)) {
           answeredCount++;
         }
       }
       
       // Update progress bar
-      const progress = (answeredCount / 7) * 100;
+      const progress = (answeredCount / 12) * 100;
       document.getElementById('progressBar').style.width = `${progress}%`;
       
       // Enable/disable submit button
-      submitBtn.disabled = answeredCount < 7;
+      submitBtn.disabled = answeredCount < 12;
     });
 
     function showResults() {
       let score = 0;
-      for (let i = 1; i <= 7; i++) {
+      for (let i = 1; i <= 12; i++) {
         score += parseInt(form[`q${i}`].value);
       }
       
-      const percentage = Math.round((score / 7) * 100);
+      const percentage = Math.round((score / 24) * 100); // Max score is 24 (2pts per question)
       const resultSection = document.getElementById('resultSection');
       const resultCard = document.getElementById('resultCard');
       const resultTitle = document.getElementById('resultTitle');
@@ -310,46 +358,46 @@
       const percentageText = document.getElementById('percentageText');
       
       // Set liquid color and fill based on score
-      if (percentage >= 85) {
+      if (percentage >= 75) {
         resultCard.className = "result-card high-fit";
         liquidFill.style.background = 'linear-gradient(to top, #4CAF50, #81C784)';
         resultTitle.textContent = "Perfect Fit!";
         resultDescription.innerHTML = `
-          <p>WeddingGate could save you 5-10 hours per week based on your answers!</p>
-          <p>You're experiencing exactly the pain points we solve.</p>
+          <p>WeddingGate could save you <strong>5-15 hours per week</strong> based on your pain points!</p>
+          <p>You're experiencing exactly the vendor coordination challenges we solve.</p>
         `;
         recommendationsList.innerHTML = `
-          <li>Join our priority waitlist for early access</li>
-          <li>Schedule a demo to see how WeddingGate works</li>
-          <li>Start planning your onboarding process</li>
+          <li><strong>Priority onboarding:</strong> Join our exclusive early access program</li>
+          <li><strong>Custom demo:</strong> See how we solve your specific frustrations</li>
+          <li><strong>Vendor network:</strong> Get pre-vetted vendor recommendations</li>
         `;
       } 
-      else if (percentage >= 50) {
+      else if (percentage >= 40) {
         resultCard.className = "result-card medium-fit";
         liquidFill.style.background = 'linear-gradient(to top, #FFC107, #FFD54F)';
-        resultTitle.textContent = "Good Potential Fit";
+        resultTitle.textContent = "Strong Potential Fit";
         resultDescription.innerHTML = `
-          <p>WeddingGate could help streamline parts of your workflow.</p>
-          <p>You might benefit most from our vendor management and client tracking features.</p>
+          <p>WeddingGate could help streamline <strong>vendor management</strong> and <strong>client expectations</strong>.</p>
+          <p>You're experiencing early signs of scaling pain we can prevent.</p>
         `;
         recommendationsList.innerHTML = `
-          <li>Try our free tools for vendor management</li>
-          <li>Attend a webinar to see if it fits your needs</li>
-          <li>Follow our blog for planning tips</li>
+          <li><strong>Free trial:</strong> Test our vendor tracking features</li>
+          <li><strong>Webinar:</strong> "How top planners avoid vendor disasters"</li>
+          <li><strong>Template kit:</strong> Download our client-vendor agreement templates</li>
         `;
       }
       else {
         resultCard.className = "result-card low-fit";
         liquidFill.style.background = 'linear-gradient(to top, #F44336, #E57373)';
-        resultTitle.textContent = "Limited Fit";
+        resultTitle.textContent = "Limited Fit (For Now)";
         resultDescription.innerHTML = `
-          <p>Based on your answers, your current workflow might not need WeddingGate yet.</p>
-          <p>We recommend checking back when you're managing more events or feeling more pain with vendor coordination.</p>
+          <p>Your current workflow seems manageable, but check back when:</p>
+          <p>- You're handling more weddings<br>- Vendor issues become frequent<br>- Client changes eat your time</p>
         `;
         recommendationsList.innerHTML = `
-          <li>Follow us to see new features as we launch them</li>
-          <li>Download our free event planning templates</li>
-          <li>Join our Facebook group for planners</li>
+          <li><strong>Free resources:</strong> Get our "Vendor Red Flags Checklist"</li>
+          <li><strong>Growth guide:</strong> "When to Invest in Planning Software"</li>
+          <li><strong>Community:</strong> Join our Facebook group for planners</li>
         `;
       }
       
